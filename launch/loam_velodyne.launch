@@ -21,8 +21,13 @@
   <node pkg="loam_velodyne" type="transformMaintenance" name="transformMaintenance" output="screen">
   </node>
 
+  <node pkg="rosbag" type="play" name="play" args="--clock /home/cbin/1号车52为了测试中德瑞博见图效果.bag" output="screen" > 
+    <remap from="/imu" to="/raw_imu"/>
+  </node> 
+
   <group if="$(arg rviz)">
     <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find loam_velodyne)/rviz_cfg/loam_velodyne.rviz" />
   </group>
+
 
 </launch>
